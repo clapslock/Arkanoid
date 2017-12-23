@@ -15,6 +15,16 @@
 		07560B921FEE73DC00F2ED20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07560B901FEE73DC00F2ED20 /* Main.storyboard */; };
 		07560B941FEE73DC00F2ED20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07560B931FEE73DC00F2ED20 /* Assets.xcassets */; };
 		07560B971FEE73DC00F2ED20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07560B951FEE73DC00F2ED20 /* LaunchScreen.storyboard */; };
+		07560BA21FEE7F2D00F2ED20 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA01FEE7F2D00F2ED20 /* BrokenPlatform.sks */; };
+		07560BA31FEE7F2D00F2ED20 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA11FEE7F2D00F2ED20 /* BallTrail.sks */; };
+		07560BAB1FEE802000F2ED20 /* paddleBlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA61FEE802000F2ED20 /* paddleBlip.wav */; };
+		07560BAC1FEE802000F2ED20 /* game-over.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA71FEE802000F2ED20 /* game-over.wav */; };
+		07560BAD1FEE802000F2ED20 /* BambooBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA81FEE802000F2ED20 /* BambooBreak.wav */; };
+		07560BAE1FEE802000F2ED20 /* pongblip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA91FEE802000F2ED20 /* pongblip.wav */; };
+		07560BAF1FEE802000F2ED20 /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07560BAA1FEE802000F2ED20 /* game-won.mp3 */; };
+		07560BB31FEE82C200F2ED20 /* WaitingForTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB21FEE82C100F2ED20 /* WaitingForTap.swift */; };
+		07560BB51FEE82CE00F2ED20 /* Playing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB41FEE82CE00F2ED20 /* Playing.swift */; };
+		07560BB71FEE82DD00F2ED20 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB61FEE82DD00F2ED20 /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +38,16 @@
 		07560B931FEE73DC00F2ED20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07560B961FEE73DC00F2ED20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07560B981FEE73DC00F2ED20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07560BA01FEE7F2D00F2ED20 /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform.sks; sourceTree = "<group>"; };
+		07560BA11FEE7F2D00F2ED20 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
+		07560BA61FEE802000F2ED20 /* paddleBlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = paddleBlip.wav; sourceTree = "<group>"; };
+		07560BA71FEE802000F2ED20 /* game-over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "game-over.wav"; sourceTree = "<group>"; };
+		07560BA81FEE802000F2ED20 /* BambooBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BambooBreak.wav; sourceTree = "<group>"; };
+		07560BA91FEE802000F2ED20 /* pongblip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pongblip.wav; sourceTree = "<group>"; };
+		07560BAA1FEE802000F2ED20 /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-won.mp3"; sourceTree = "<group>"; };
+		07560BB21FEE82C100F2ED20 /* WaitingForTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForTap.swift; sourceTree = "<group>"; };
+		07560BB41FEE82CE00F2ED20 /* Playing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playing.swift; sourceTree = "<group>"; };
+		07560BB61FEE82DD00F2ED20 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +80,59 @@
 		07560B851FEE73DC00F2ED20 /* Arkanoid */ = {
 			isa = PBXGroup;
 			children = (
-				07560B861FEE73DC00F2ED20 /* AppDelegate.swift */,
 				07560B881FEE73DC00F2ED20 /* GameScene.sks */,
 				07560B8A1FEE73DC00F2ED20 /* Actions.sks */,
 				07560B8C1FEE73DC00F2ED20 /* GameScene.swift */,
 				07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */,
 				07560B901FEE73DC00F2ED20 /* Main.storyboard */,
+				07560BB11FEE820B00F2ED20 /* Game States */,
+				07560BB01FEE806100F2ED20 /* Supporting files */,
+				07560BA51FEE800300F2ED20 /* Sounds */,
+				07560BA41FEE7FB500F2ED20 /* Particles */,
 				07560B931FEE73DC00F2ED20 /* Assets.xcassets */,
+			);
+			path = Arkanoid;
+			sourceTree = "<group>";
+		};
+		07560BA41FEE7FB500F2ED20 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				07560BA11FEE7F2D00F2ED20 /* BallTrail.sks */,
+				07560BA01FEE7F2D00F2ED20 /* BrokenPlatform.sks */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
+		07560BA51FEE800300F2ED20 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				07560BA81FEE802000F2ED20 /* BambooBreak.wav */,
+				07560BA71FEE802000F2ED20 /* game-over.wav */,
+				07560BAA1FEE802000F2ED20 /* game-won.mp3 */,
+				07560BA61FEE802000F2ED20 /* paddleBlip.wav */,
+				07560BA91FEE802000F2ED20 /* pongblip.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		07560BB01FEE806100F2ED20 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				07560B861FEE73DC00F2ED20 /* AppDelegate.swift */,
 				07560B951FEE73DC00F2ED20 /* LaunchScreen.storyboard */,
 				07560B981FEE73DC00F2ED20 /* Info.plist */,
 			);
-			path = Arkanoid;
+			name = "Supporting files";
+			sourceTree = "<group>";
+		};
+		07560BB11FEE820B00F2ED20 /* Game States */ = {
+			isa = PBXGroup;
+			children = (
+				07560BB21FEE82C100F2ED20 /* WaitingForTap.swift */,
+				07560BB41FEE82CE00F2ED20 /* Playing.swift */,
+				07560BB61FEE82DD00F2ED20 /* GameOver.swift */,
+			);
+			name = "Game States";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,9 +195,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				07560B921FEE73DC00F2ED20 /* Main.storyboard in Resources */,
+				07560BAF1FEE802000F2ED20 /* game-won.mp3 in Resources */,
+				07560BAE1FEE802000F2ED20 /* pongblip.wav in Resources */,
+				07560BAC1FEE802000F2ED20 /* game-over.wav in Resources */,
+				07560BA21FEE7F2D00F2ED20 /* BrokenPlatform.sks in Resources */,
 				07560B891FEE73DC00F2ED20 /* GameScene.sks in Resources */,
+				07560BAB1FEE802000F2ED20 /* paddleBlip.wav in Resources */,
 				07560B941FEE73DC00F2ED20 /* Assets.xcassets in Resources */,
+				07560BA31FEE7F2D00F2ED20 /* BallTrail.sks in Resources */,
 				07560B971FEE73DC00F2ED20 /* LaunchScreen.storyboard in Resources */,
+				07560BAD1FEE802000F2ED20 /* BambooBreak.wav in Resources */,
 				07560B8B1FEE73DC00F2ED20 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,8 +217,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				07560B8D1FEE73DC00F2ED20 /* GameScene.swift in Sources */,
+				07560BB31FEE82C200F2ED20 /* WaitingForTap.swift in Sources */,
 				07560B8F1FEE73DC00F2ED20 /* GameViewController.swift in Sources */,
+				07560BB71FEE82DD00F2ED20 /* GameOver.swift in Sources */,
 				07560B871FEE73DC00F2ED20 /* AppDelegate.swift in Sources */,
+				07560BB51FEE82CE00F2ED20 /* Playing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
