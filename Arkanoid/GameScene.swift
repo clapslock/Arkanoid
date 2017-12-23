@@ -26,8 +26,8 @@ class GameScene: SKScene {
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         
-        let ball = childNode(withName: "ball") as! SKSpriteNode
-        ball.physicsBody!.applyImpulse(CGVector(dx: 12, dy: 12))
+        let ball = childNode(withName: BallCategoryName) as! SKSpriteNode
+        ball.physicsBody!.applyImpulse(CGVector(dx: 1, dy: -12))
         
         
         
