@@ -81,10 +81,10 @@
 			isa = PBXGroup;
 			children = (
 				07560B881FEE73DC00F2ED20 /* GameScene.sks */,
-				07560B8A1FEE73DC00F2ED20 /* Actions.sks */,
 				07560B8C1FEE73DC00F2ED20 /* GameScene.swift */,
 				07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */,
 				07560B901FEE73DC00F2ED20 /* Main.storyboard */,
+				07560B8A1FEE73DC00F2ED20 /* Actions.sks */,
 				07560BB11FEE820B00F2ED20 /* Game States */,
 				07560BB01FEE806100F2ED20 /* Supporting files */,
 				07560BA51FEE800300F2ED20 /* Sounds */,
