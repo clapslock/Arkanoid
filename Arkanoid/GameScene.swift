@@ -19,13 +19,9 @@ let blockCategory: UInt32 = 0x1 << 2
 let paddleCategory: UInt32 = 0x1 << 3
 let borderCategory: UInt32 = 0x1 << 4
 
-let blockWidth = 77
-let blockHeight = 33
-
-
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-   
+    
     var isFingerOnPaddle = false
     
     override func didMove(to view: SKView) {
@@ -37,19 +33,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         borderBody.categoryBitMask = borderCategory
         self.physicsBody = borderBody
         
-        let paddle = SKSpriteNode(imageNamed: "paddle_blue")
-        paddle.physicsBody?.affectedByGravity = false
-        paddle.physicsBody?.allowsRotation = false
-        paddle.physicsBody?.angularDamping = 0
-        paddle.physicsBody?.angularVelocity = 0
-        paddle.position.y = (-self.frame.height / 2) + 20
-        paddle.zPosition = 5
-        
-        //let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
+        let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
         paddle.physicsBody?.categoryBitMask = paddleCategory
-        addChild(paddle)
-
-
+        
+        
         let bottomRect = CGRect(x: 0,
                                 y: -(self.frame.height / 2),
                                 width: self.frame.width,
@@ -64,7 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ball.physicsBody?.categoryBitMask = ballCategory
         ball.physicsBody?.contactTestBitMask = bottomCategory
         ball.physicsBody!.applyImpulse(CGVector(dx: 1, dy: -12))
-
+        
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
