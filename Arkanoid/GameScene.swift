@@ -7,7 +7,9 @@
 //
 
 import SpriteKit
+import GameplayKit
 
+// MARK: Constants
 let BallCategoryName = "ball"
 let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
@@ -19,10 +21,14 @@ let blockCategory: UInt32 = 0x1 << 2
 let paddleCategory: UInt32 = 0x1 << 3
 let borderCategory: UInt32 = 0x1 << 4
 
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var isFingerOnPaddle = false
+    lazy var gameState: GKStateMachine = GKStateMachine(states: [
+        WaitingForTap(scene: self),
+        Playing(scene: self),
+        GameOver(scene: self)
+        ])
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -50,7 +56,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let ball = childNode(withName: BallCategoryName) as! SKSpriteNode
         ball.physicsBody?.categoryBitMask = ballCategory
         ball.physicsBody?.contactTestBitMask = bottomCategory | blockCategory
-        ball.physicsBody!.applyImpulse(CGVector(dx: 1, dy: -12))
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
@@ -79,11 +84,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             block.size = blockSize
             addChild(block)
             
+            let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
+            gameMessage.name = GameMessageName
+            gameMessage.position = CGPoint(x: 0, y: 0)
+            gameMessage.zPosition = 4
+            gameMessage.setScale(0.0)
+            addChild(gameMessage)
+            
+            gameState.enter(WaitingForTap.self)
         }
         
         
     }
-    
+// MARK: Handling touch
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let touchLocation = touch!.location(in: self)
@@ -119,7 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isFingerOnPaddle = false
     }
-    
+// MARK: Handling collisions
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
@@ -141,7 +154,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             breakBlock(node: secondBody.node!)
         }
     }
-    
+
+// MARK: Remove block from the scene
     func breakBlock(node: SKNode) {
         let particles: SKEmitterNode! = SKEmitterNode(fileNamed: "BrokenPlatform.sks")
         particles.position = node.position
