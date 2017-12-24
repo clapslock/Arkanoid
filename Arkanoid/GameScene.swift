@@ -13,8 +13,14 @@ let PaddleCategoryName = "paddle"
 let BlockCategoryName = "block"
 let GameMessageName = "gameMessage"
 
+let ballCategory: UInt32 = 0x1 << 0
+let bottomCategory: UInt32 = 0x1 << 1
+let blockCategory: UInt32 = 0x1 << 2
+let paddleCategory: UInt32 = 0x1 << 3
+let borderCategory: UInt32 = 0x1 << 4
 
-class GameScene: SKScene {
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
    
     var isFingerOnPaddle = false
     
@@ -24,12 +30,31 @@ class GameScene: SKScene {
         let borderBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         borderBody.friction = 0
         borderBody.restitution = 1
+        borderBody.categoryBitMask = borderCategory
         self.physicsBody = borderBody
         
-        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
+        paddle.physicsBody?.categoryBitMask = paddleCategory
+
+
+        let bottomRect = CGRect(x: 0,
+                                y: -(self.frame.height / 2),
+                                width: self.frame.width,
+                                height: 6)
+        let bottom = SKNode()
+        bottom.physicsBody = SKPhysicsBody(edgeLoopFrom: bottomRect)
+        bottom.zPosition = 9
+        bottom.physicsBody?.categoryBitMask = bottomCategory
+        addChild(bottom)
         
         let ball = childNode(withName: BallCategoryName) as! SKSpriteNode
+        ball.physicsBody?.categoryBitMask = ballCategory
+        ball.physicsBody?.contactTestBitMask = bottomCategory
         ball.physicsBody!.applyImpulse(CGVector(dx: 1, dy: -12))
+
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        physicsWorld.contactDelegate = self
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -39,7 +64,6 @@ class GameScene: SKScene {
         if let body = physicsWorld.body(at: touchLocation) {
             if body.node!.name == PaddleCategoryName {
                 isFingerOnPaddle = true
-                print("It works!")
             }
             
         }
@@ -67,6 +91,24 @@ class GameScene: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isFingerOnPaddle = false
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == bottomCategory {
+            print("Colision works!")
+        }
+        
     }
 }
 
