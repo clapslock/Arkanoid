@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(bottom)
         
         let ball = childNode(withName: BallCategoryName) as! SKSpriteNode
+        ball.physicsBody?.mass = 0.005
         ball.physicsBody?.categoryBitMask = ballCategory
         ball.physicsBody?.contactTestBitMask = bottomCategory | blockCategory
         
@@ -98,16 +99,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     // MARK: Handling touch
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        let touchLocation = touch!.location(in: self)
-        
-        if let body = physicsWorld.body(at: touchLocation) {
-            if body.node!.name == PaddleCategoryName {
-                isFingerOnPaddle = true
-            }
+        switch gameState.currentState {
+        case is WaitingForTap:
+            gameState.enter(Playing.self)
+            isFingerOnPaddle = true
+        case is Playing:
+            let touch = touches.first
+            let touchLocation = touch?.location(in: self)
             
+            if let body = physicsWorld.body(at: touchLocation!) {
+                if body.node!.name == PaddleCategoryName {
+                    isFingerOnPaddle = true
+                }
+            }
+        default:
+            break
         }
-        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -131,6 +138,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isFingerOnPaddle = false
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        gameState.update(deltaTime: currentTime)
     }
     // MARK: Handling collisions
     func didBegin(_ contact: SKPhysicsContact) {
