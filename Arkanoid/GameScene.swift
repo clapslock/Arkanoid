@@ -118,7 +118,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isFingerOnPaddle {
+//        if isFingerOnPaddle {
             let touch = touches.first
             let touchLocation = touch!.location(in: self)
             let previousLocation = touch!.previousLocation(in: self)
@@ -133,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
-        }
+       // }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
