@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
     }
-// MARK: Handling touch
+    // MARK: Handling touch
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         let touchLocation = touch!.location(in: self)
@@ -132,7 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         isFingerOnPaddle = false
     }
-// MARK: Handling collisions
+    // MARK: Handling collisions
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
@@ -155,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-// MARK: Remove block from the scene
+    // MARK: Remove block from the scene
     func breakBlock(node: SKNode) {
         let particles: SKEmitterNode! = SKEmitterNode(fileNamed: "BrokenPlatform.sks")
         particles.position = node.position
@@ -164,6 +164,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         particles?.run(SKAction.sequence([SKAction.wait(forDuration: 1.0),
                                           SKAction.removeFromParent()]))
         node.removeFromParent()
+    }
+    
+    // MARK: Generate random nuumber
+    func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat {
+        let rand: CGFloat = CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+        return (rand) * (to - from) * from
     }
 }
 
