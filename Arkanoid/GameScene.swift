@@ -29,6 +29,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Playing(scene: self),
         GameOver(scene: self)
         ])
+    var gameWon: Bool = false {
+        didSet {
+            let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
+            let textureName = gameWon ? "YouWon" : "GameOver"
+            let texture = SKTexture(imageNamed: textureName)
+            let actionSequence = SKAction.sequence([SKAction.setTexture(texture),
+                                                    SKAction.scale(to: 1.0, duration: 0.25)])
+            gameOver.run(actionSequence)
+        }
+    }
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -46,10 +56,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bottomRect = CGRect(x: 0,
                                 y: -(self.frame.height / 2),
                                 width: self.frame.width,
-                                height: 6)
+                                height: 10)
         let bottom = SKNode()
         bottom.physicsBody = SKPhysicsBody(edgeLoopFrom: bottomRect)
-        bottom.zPosition = 9
+        bottom.zPosition = 5
         bottom.physicsBody?.categoryBitMask = bottomCategory
         addChild(bottom)
         
@@ -112,6 +122,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     isFingerOnPaddle = true
                 }
             }
+        case is GameOver:
+            let newScene = GameScene(fileNamed: "GameScene")
+            newScene?.scaleMode = .aspectFit
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            self.view?.presentScene(newScene!, transition: reveal)
+            
         default:
             break
         }
@@ -145,24 +161,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     // MARK: Handling collisions
     func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody: SKPhysicsBody
-        var secondBody: SKPhysicsBody
-        
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        } else {
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == bottomCategory {
-            print("Colision works!")
-        }
-        
-        // Adds SKEmitternode to destroyed blocks
-        if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory {
-            breakBlock(node: secondBody.node!)
+        if gameState.currentState is Playing {
+            var firstBody: SKPhysicsBody
+            var secondBody: SKPhysicsBody
+            
+            if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+                firstBody = contact.bodyA
+                secondBody = contact.bodyB
+            } else {
+                firstBody = contact.bodyB
+                secondBody = contact.bodyA
+            }
+            
+            if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == bottomCategory {
+                gameState.enter(GameOver.self)
+                gameWon = false
+            }
+            
+            // Adds SKEmitternode to destroyed blocks
+            if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory {
+                breakBlock(node: secondBody.node!)
+                if isGameWon() {
+                    gameState.enter(GameOver.self)
+                    gameWon = true
+                }
+            }
         }
     }
 
@@ -181,6 +204,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat {
         let rand: CGFloat = CGFloat(Float(arc4random()) / 0xFFFFFFFF)
         return (rand) * (to - from) * from
+    }
+    
+    func isGameWon() -> Bool {
+        var numberOfBricks = 0
+        self.enumerateChildNodes(withName: BlockCategoryName, using: ({
+            node, stop in
+            numberOfBricks = numberOfBricks + 1
+        }))
+        return numberOfBricks == 0
     }
 }
 
