@@ -55,6 +55,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
+        let numberOfBlocks = 5
+        let blockWidth: CGFloat = 65
+        let blockHeight: CGFloat = 25
+        let blockSize = CGSize(width: blockWidth, height: blockHeight)
+        let totalBlockWidth = CGFloat(numberOfBlocks) * blockWidth
+        let xOffset = (self.frame.width - totalBlockWidth) / 2
+        
+        //adding blocks programatically to the scene 
+        for i in 0..<numberOfBlocks {
+            let block = SKSpriteNode(imageNamed: "brick_blue_small")
+            
+            block.position = CGPoint(x: (self.frame.width / 2) - 2 * xOffset - CGFloat(i) * blockWidth,
+                                     y: (self.frame.height / 2) * 0.7)
+            block.physicsBody = SKPhysicsBody(rectangleOf: blockSize)
+            block.physicsBody?.allowsRotation = false
+            block.physicsBody?.friction = 0.0
+            block.physicsBody?.affectedByGravity = false
+            block.physicsBody?.isDynamic = false
+            block.name = BlockCategoryName
+            block.physicsBody?.categoryBitMask = blockCategory
+            block.zPosition = 7
+            block.size = blockSize
+            addChild(block)
+            
+        }
         
         
     }
