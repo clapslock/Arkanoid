@@ -49,7 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let ball = childNode(withName: BallCategoryName) as! SKSpriteNode
         ball.physicsBody?.categoryBitMask = ballCategory
-        ball.physicsBody?.contactTestBitMask = bottomCategory
+        ball.physicsBody?.contactTestBitMask = bottomCategory | blockCategory
         ball.physicsBody!.applyImpulse(CGVector(dx: 1, dy: -12))
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let totalBlockWidth = CGFloat(numberOfBlocks) * blockWidth
         let xOffset = (self.frame.width - totalBlockWidth) / 2
         
-        //adding blocks programatically to the scene 
+        //adding blocks programatically to the scene
         for i in 0..<numberOfBlocks {
             let block = SKSpriteNode(imageNamed: "brick_blue_small")
             
@@ -75,7 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             block.physicsBody?.isDynamic = false
             block.name = BlockCategoryName
             block.physicsBody?.categoryBitMask = blockCategory
-            block.zPosition = 7
+            block.zPosition = 2
             block.size = blockSize
             addChild(block)
             
@@ -136,6 +136,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("Colision works!")
         }
         
+        // Adds SKEmitternode to destroyed blocks
+        if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory {
+            breakBlock(node: secondBody.node!)
+        }
+    }
+    
+    func breakBlock(node: SKNode) {
+        let particles: SKEmitterNode! = SKEmitterNode(fileNamed: "BrokenPlatform.sks")
+        particles.position = node.position
+        particles.zPosition = 3
+        addChild(particles)
+        particles?.run(SKAction.sequence([SKAction.wait(forDuration: 1.0),
+                                          SKAction.removeFromParent()]))
+        node.removeFromParent()
     }
 }
 
