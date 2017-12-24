@@ -19,6 +19,10 @@ let blockCategory: UInt32 = 0x1 << 2
 let paddleCategory: UInt32 = 0x1 << 3
 let borderCategory: UInt32 = 0x1 << 4
 
+let blockWidth = 77
+let blockHeight = 33
+
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
    
@@ -33,8 +37,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         borderBody.categoryBitMask = borderCategory
         self.physicsBody = borderBody
         
-        let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
+        let paddle = SKSpriteNode(imageNamed: "paddle_blue")
+        paddle.physicsBody?.affectedByGravity = false
+        paddle.physicsBody?.allowsRotation = false
+        paddle.physicsBody?.angularDamping = 0
+        paddle.physicsBody?.angularVelocity = 0
+        paddle.position.y = (-self.frame.height / 2) + 20
+        paddle.zPosition = 5
+        
+        //let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
         paddle.physicsBody?.categoryBitMask = paddleCategory
+        addChild(paddle)
 
 
         let bottomRect = CGRect(x: 0,
