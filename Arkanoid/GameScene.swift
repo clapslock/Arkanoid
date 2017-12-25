@@ -165,10 +165,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if body.node!.name == PaddleCategoryName {
                     isFingerOnPaddle = true
                     
-                } else if body.node!.name == "backBtn" {
-                    print("Trying to go back :/")
-                    self.view!.window!.rootViewController!.dismiss(animated: true, completion: nil)
                 }
+//                else if body.node!.name == "backBtn" {
+//                    print("Trying to go back :/")
+//                    self.view!.window!.rootViewController!.dismiss(animated: true, completion: nil)
+//                }
             }
         case is GameOver:
             let newScene = GameScene(fileNamed: "GameScene")

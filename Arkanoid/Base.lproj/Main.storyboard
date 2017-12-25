@@ -105,7 +105,7 @@
         <!--levelSelectVC-->
         <scene sceneID="wOs-ru-efi">
             <objects>
-                <viewController title="levelSelectVC" id="PPC-L4-H7c" sceneMemberID="viewController">
+                <viewController title="levelSelectVC" id="PPC-L4-H7c" customClass="LevelSelectVC" customModule="Arkanoid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tdC-c1-tHg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,14 +282,28 @@
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeY-g6-df8">
+                                <rect key="frame" x="0.0" y="45" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="hMb-hf-ZKV"/>
+                                    <constraint firstAttribute="height" constant="30" id="n5X-gt-Hss"/>
+                                </constraints>
+                                <state key="normal" image="back_btn"/>
+                                <connections>
+                                    <action selector="backBtnTapped:" destination="PPC-L4-H7c" eventType="touchUpInside" id="3WD-gB-DwH"/>
+                                    <segue destination="xnd-nV-TAy" kind="unwind" identifier="MenuVC" unwindAction="unwindToMenuWithSegue:" id="N7Z-WM-4F9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IGc-cc-IZZ" firstAttribute="top" secondItem="tdC-c1-tHg" secondAttribute="top" id="7N9-aT-TdG"/>
                             <constraint firstItem="0MK-fM-FZN" firstAttribute="leading" secondItem="DXT-UK-eFG" secondAttribute="leading" id="GoA-x9-D4E"/>
+                            <constraint firstItem="FeY-g6-df8" firstAttribute="leading" secondItem="jF3-I4-nc3" secondAttribute="leading" id="IXZ-n0-W7K"/>
                             <constraint firstItem="DXT-UK-eFG" firstAttribute="centerY" secondItem="tdC-c1-tHg" secondAttribute="centerY" id="NaT-gq-PDV"/>
                             <constraint firstItem="DXT-UK-eFG" firstAttribute="centerX" secondItem="tdC-c1-tHg" secondAttribute="centerX" id="Pfs-Vu-WT2"/>
                             <constraint firstItem="IGc-cc-IZZ" firstAttribute="leading" secondItem="jF3-I4-nc3" secondAttribute="leading" id="itM-XU-0EP"/>
+                            <constraint firstItem="FeY-g6-df8" firstAttribute="top" secondItem="tdC-c1-tHg" secondAttribute="top" constant="45" id="kCb-C9-Br8"/>
                             <constraint firstItem="IGc-cc-IZZ" firstAttribute="trailing" secondItem="jF3-I4-nc3" secondAttribute="trailing" id="oRf-go-Ex6"/>
                             <constraint firstItem="DXT-UK-eFG" firstAttribute="top" secondItem="0MK-fM-FZN" secondAttribute="bottom" constant="36" id="spJ-jR-njn"/>
                             <constraint firstAttribute="bottom" secondItem="IGc-cc-IZZ" secondAttribute="bottom" id="v8Q-1G-fyY"/>
@@ -299,27 +313,48 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IO6-6I-cEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xnd-nV-TAy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-632.79999999999995" y="133.74384236453201"/>
         </scene>
-        <!--Game View Controller-->
+        <!--GameViewController-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Arkanoid" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="GameViewController" id="BV1-FR-VrT" customClass="GameViewController" customModule="Arkanoid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu3-nN-WaH">
+                                <rect key="frame" x="0.0" y="45" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aX1-te-ZEf"/>
+                                    <constraint firstAttribute="width" constant="75" id="zns-sj-iua"/>
+                                </constraints>
+                                <state key="normal" image="back_btn"/>
+                                <connections>
+                                    <action selector="goBackToSelectLevel:" destination="BV1-FR-VrT" eventType="touchUpInside" id="O0k-xJ-GYT"/>
+                                    <segue destination="Mot-Ak-eM2" kind="unwind" identifier="LevelSelectVC" unwindAction="unwindToLevelSelectWithSegue:" id="HUL-YM-KQ9"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Zu3-nN-WaH" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="Obb-8I-yOj"/>
+                            <constraint firstItem="Zu3-nN-WaH" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" constant="45" id="hVG-NB-51K"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <exit id="Mot-Ak-eM2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="257" y="134"/>
         </scene>
     </scenes>
     <resources>
         <image name="arkanoid_logo" width="342" height="127"/>
+        <image name="back_btn" width="34" height="30"/>
         <image name="menu_background" width="416" height="902"/>
     </resources>
 </document>

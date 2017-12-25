@@ -31,6 +31,11 @@ class GameViewController: UIViewController {
         }
     }
     
+    @IBAction func goBackToSelectLevel(_ sender: UIButton) {
+        performSegue(withIdentifier: "LevelSelectVC", sender: self)
+    }
+    
+    
     override var shouldAutorotate : Bool {
         return true
     }
