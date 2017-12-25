@@ -25,6 +25,7 @@
 		07560BB31FEE82C200F2ED20 /* WaitingForTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB21FEE82C100F2ED20 /* WaitingForTap.swift */; };
 		07560BB51FEE82CE00F2ED20 /* Playing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB41FEE82CE00F2ED20 /* Playing.swift */; };
 		07560BB71FEE82DD00F2ED20 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB61FEE82DD00F2ED20 /* GameOver.swift */; };
+		07BCFF271FF0858B00876EA8 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BCFF261FF0858B00876EA8 /* MenuVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		07560BB21FEE82C100F2ED20 /* WaitingForTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForTap.swift; sourceTree = "<group>"; };
 		07560BB41FEE82CE00F2ED20 /* Playing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playing.swift; sourceTree = "<group>"; };
 		07560BB61FEE82DD00F2ED20 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		07BCFF261FF0858B00876EA8 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				07560B8C1FEE73DC00F2ED20 /* GameScene.swift */,
 				07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */,
 				07560B901FEE73DC00F2ED20 /* Main.storyboard */,
+				07BCFF261FF0858B00876EA8 /* MenuVC.swift */,
 				07560B8A1FEE73DC00F2ED20 /* Actions.sks */,
 				07560BB11FEE820B00F2ED20 /* Game States */,
 				07560BB01FEE806100F2ED20 /* Supporting files */,
@@ -219,6 +222,7 @@
 				07560B8D1FEE73DC00F2ED20 /* GameScene.swift in Sources */,
 				07560BB31FEE82C200F2ED20 /* WaitingForTap.swift in Sources */,
 				07560B8F1FEE73DC00F2ED20 /* GameViewController.swift in Sources */,
+				07BCFF271FF0858B00876EA8 /* MenuVC.swift in Sources */,
 				07560BB71FEE82DD00F2ED20 /* GameOver.swift in Sources */,
 				07560B871FEE73DC00F2ED20 /* AppDelegate.swift in Sources */,
 				07560BB51FEE82CE00F2ED20 /* Playing.swift in Sources */,

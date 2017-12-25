@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DlE-Cv-QF0">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,82 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
+        <!--MenuVC-->
+        <scene sceneID="YIw-u6-0Th">
+            <objects>
+                <viewController title="MenuVC" id="DlE-Cv-QF0" customClass="MenuVC" customModule="Arkanoid" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ag9-sS-NWK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_background" translatesAutoresizingMaskIntoConstraints="NO" id="Exi-eG-Zhq" customClass="menuVC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arkanoid_logo" translatesAutoresizingMaskIntoConstraints="NO" id="9fm-JL-4vA">
+                                <rect key="frame" x="53" y="97" width="269" height="127"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="7Ne-BZ-5Vc">
+                                <rect key="frame" x="138" y="326" width="99" height="140"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bm-a5-kXV">
+                                        <rect key="frame" x="0.0" y="0.0" width="99" height="42"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <state key="normal" title="Play!">
+                                            <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="playBtnPressed:" destination="DlE-Cv-QF0" eventType="touchUpInside" id="IcX-Fh-h0O"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e2Z-Wt-FQj">
+                                        <rect key="frame" x="0.0" y="49" width="99" height="42"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <state key="normal" title="Settings">
+                                            <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="settingsBtnPressed:" destination="DlE-Cv-QF0" eventType="touchUpInside" id="gqU-hG-4Sc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZf-sL-mkc">
+                                        <rect key="frame" x="0.0" y="98" width="99" height="42"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
+                                        <state key="normal" title="Credits">
+                                            <color key="titleColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="creditsBtnPressed:" destination="DlE-Cv-QF0" eventType="touchUpInside" id="2eY-DQ-COy"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Ne-BZ-5Vc" firstAttribute="centerX" secondItem="Ag9-sS-NWK" secondAttribute="centerX" id="3TO-go-kZB"/>
+                            <constraint firstItem="7Ne-BZ-5Vc" firstAttribute="centerY" secondItem="Ag9-sS-NWK" secondAttribute="centerY" constant="-10" id="Me8-Ja-ieV"/>
+                            <constraint firstItem="llS-19-LRS" firstAttribute="trailing" secondItem="9fm-JL-4vA" secondAttribute="trailing" constant="53" id="N6b-nG-Q4I"/>
+                            <constraint firstItem="9fm-JL-4vA" firstAttribute="leading" secondItem="llS-19-LRS" secondAttribute="leading" constant="53" id="Opv-5k-XUi"/>
+                            <constraint firstItem="Exi-eG-Zhq" firstAttribute="leading" secondItem="llS-19-LRS" secondAttribute="leading" id="Ra6-rm-TGd"/>
+                            <constraint firstItem="9fm-JL-4vA" firstAttribute="top" secondItem="llS-19-LRS" secondAttribute="top" constant="53" id="Sou-BE-BJq"/>
+                            <constraint firstItem="Exi-eG-Zhq" firstAttribute="trailing" secondItem="llS-19-LRS" secondAttribute="trailing" id="bDW-iX-phK"/>
+                            <constraint firstAttribute="bottom" secondItem="Exi-eG-Zhq" secondAttribute="bottom" id="rkY-Bd-ZCv"/>
+                            <constraint firstItem="Exi-eG-Zhq" firstAttribute="top" secondItem="Ag9-sS-NWK" secondAttribute="top" id="y4r-Td-mXB"/>
+                            <constraint firstItem="9fm-JL-4vA" firstAttribute="centerX" secondItem="Ag9-sS-NWK" secondAttribute="centerX" id="zCi-Pw-EYb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="llS-19-LRS"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZF-6l-Bkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-846" y="137"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -25,4 +100,8 @@
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="arkanoid_logo" width="342" height="127"/>
+        <image name="menu_background" width="416" height="902"/>
+    </resources>
 </document>
