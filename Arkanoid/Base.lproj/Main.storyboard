@@ -113,6 +113,9 @@
                                                 <state key="normal" title="1">
                                                     <color key="titleColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="BV1-FR-VrT" kind="show" id="Ixl-t3-JEo"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZe-La-vJC" userLabel="2">
                                                 <rect key="frame" x="88" y="0.0" width="80" height="80"/>
@@ -221,7 +224,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="2qS-tT-53z"/>
-                                                    <constraint firstAttribute="width" constant="80" id="WN1-DQ-XOM"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="WN1-DQ-XOM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="29"/>
                                                 <state key="normal" title="10">
@@ -231,7 +234,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MsO-qV-ouq" userLabel="2">
                                                 <rect key="frame" x="88" y="0.0" width="80" height="80"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="XOb-4g-Y6f"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="XOb-4g-Y6f"/>
                                                     <constraint firstAttribute="height" constant="80" id="vjt-fl-YJW"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="29"/>
@@ -243,7 +246,7 @@
                                                 <rect key="frame" x="176" y="0.0" width="80" height="80"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="Cqk-Mr-wJ6"/>
-                                                    <constraint firstAttribute="width" constant="80" id="eeH-WR-itz"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="eeH-WR-itz"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="29"/>
                                                 <state key="normal" title="12">
@@ -257,7 +260,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0MK-fM-FZN">
                                 <rect key="frame" x="59" y="169.66666666666666" width="256" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="256" id="CYD-cj-agx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="256" id="CYD-cj-agx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -296,6 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="158" y="134"/>
         </scene>
     </scenes>
     <resources>
