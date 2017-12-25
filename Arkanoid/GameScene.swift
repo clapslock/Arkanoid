@@ -37,8 +37,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let actionSequence = SKAction.sequence([SKAction.setTexture(texture),
                                                     SKAction.scale(to: 1.0, duration: 0.25)])
             gameOver.run(actionSequence)
+            run(gameWon ? gameWonSound : gameOverSound)
         }
     }
+    
+    // MARK: Sounds
+    let blipSound = SKAction.playSoundFileNamed("pongblip", waitForCompletion: false)
+    let blipPaddleSound = SKAction.playSoundFileNamed("paddleBlip", waitForCompletion: false)
+    let blockBreakSound = SKAction.playSoundFileNamed("block-break", waitForCompletion: false)
+    let gameWonSound = SKAction.playSoundFileNamed("game-won", waitForCompletion: false)
+    let gameOverSound = SKAction.playSoundFileNamed("game-over", waitForCompletion: false)
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -53,9 +61,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         paddle.physicsBody?.categoryBitMask = paddleCategory
         
         
-        let bottomRect = CGRect(x: 0,
+        let bottomRect = CGRect(x: -self.frame.width / 2,
                                 y: -(self.frame.height / 2),
-                                width: self.frame.width,
+                                width: self.frame.width * 2,
                                 height: 10)
         let bottom = SKNode()
         bottom.physicsBody = SKPhysicsBody(edgeLoopFrom: bottomRect)
@@ -66,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let ball = childNode(withName: BallCategoryName) as! SKSpriteNode
         ball.physicsBody?.mass = 0.005
         ball.physicsBody?.categoryBitMask = ballCategory
-        ball.physicsBody?.contactTestBitMask = bottomCategory | blockCategory
+        ball.physicsBody?.contactTestBitMask = bottomCategory | blockCategory | borderCategory | paddleCategory
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
@@ -104,7 +112,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             gameState.enter(WaitingForTap.self)
         }
+        // adding emitter node to the ball (trail)
+        let trailNode = SKNode()
+        trailNode.zPosition = 1
+        addChild(trailNode)
         
+        let trail = SKEmitterNode(fileNamed: "BallTrail")!
+        trail.targetNode = trailNode
+        ball.addChild(trail)
         
     }
     // MARK: Handling touch
@@ -178,6 +193,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 gameWon = false
             }
             
+            if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == borderCategory {
+                run(blipSound)
+            }
+            
+            if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == paddleCategory {
+                run(blipPaddleSound)
+            }
+            
             // Adds SKEmitternode to destroyed blocks
             if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory {
                 breakBlock(node: secondBody.node!)
@@ -191,6 +214,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     // MARK: Remove block from the scene
     func breakBlock(node: SKNode) {
+        run(blockBreakSound)
         let particles: SKEmitterNode! = SKEmitterNode(fileNamed: "BrokenPlatform.sks")
         particles.position = node.position
         particles.zPosition = 3

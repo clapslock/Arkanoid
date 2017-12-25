@@ -19,7 +19,7 @@
 		07560BA31FEE7F2D00F2ED20 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA11FEE7F2D00F2ED20 /* BallTrail.sks */; };
 		07560BAB1FEE802000F2ED20 /* paddleBlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA61FEE802000F2ED20 /* paddleBlip.wav */; };
 		07560BAC1FEE802000F2ED20 /* game-over.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA71FEE802000F2ED20 /* game-over.wav */; };
-		07560BAD1FEE802000F2ED20 /* BambooBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA81FEE802000F2ED20 /* BambooBreak.wav */; };
+		07560BAD1FEE802000F2ED20 /* block-break.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA81FEE802000F2ED20 /* block-break.wav */; };
 		07560BAE1FEE802000F2ED20 /* pongblip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 07560BA91FEE802000F2ED20 /* pongblip.wav */; };
 		07560BAF1FEE802000F2ED20 /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 07560BAA1FEE802000F2ED20 /* game-won.mp3 */; };
 		07560BB31FEE82C200F2ED20 /* WaitingForTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB21FEE82C100F2ED20 /* WaitingForTap.swift */; };
@@ -42,7 +42,7 @@
 		07560BA11FEE7F2D00F2ED20 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
 		07560BA61FEE802000F2ED20 /* paddleBlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = paddleBlip.wav; sourceTree = "<group>"; };
 		07560BA71FEE802000F2ED20 /* game-over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "game-over.wav"; sourceTree = "<group>"; };
-		07560BA81FEE802000F2ED20 /* BambooBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BambooBreak.wav; sourceTree = "<group>"; };
+		07560BA81FEE802000F2ED20 /* block-break.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "block-break.wav"; sourceTree = "<group>"; };
 		07560BA91FEE802000F2ED20 /* pongblip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pongblip.wav; sourceTree = "<group>"; };
 		07560BAA1FEE802000F2ED20 /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "game-won.mp3"; sourceTree = "<group>"; };
 		07560BB21FEE82C100F2ED20 /* WaitingForTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForTap.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		07560BA51FEE800300F2ED20 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				07560BA81FEE802000F2ED20 /* BambooBreak.wav */,
+				07560BA81FEE802000F2ED20 /* block-break.wav */,
 				07560BA71FEE802000F2ED20 /* game-over.wav */,
 				07560BAA1FEE802000F2ED20 /* game-won.mp3 */,
 				07560BA61FEE802000F2ED20 /* paddleBlip.wav */,
@@ -204,7 +204,7 @@
 				07560B941FEE73DC00F2ED20 /* Assets.xcassets in Resources */,
 				07560BA31FEE7F2D00F2ED20 /* BallTrail.sks in Resources */,
 				07560B971FEE73DC00F2ED20 /* LaunchScreen.storyboard in Resources */,
-				07560BAD1FEE802000F2ED20 /* BambooBreak.wav in Resources */,
+				07560BAD1FEE802000F2ED20 /* block-break.wav in Resources */,
 				07560B8B1FEE73DC00F2ED20 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
