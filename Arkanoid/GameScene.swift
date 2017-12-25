@@ -60,7 +60,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
         paddle.physicsBody?.categoryBitMask = paddleCategory
         
-        
         let bottomRect = CGRect(x: -self.frame.width / 2,
                                 y: -(self.frame.height / 2),
                                 width: self.frame.width * 2,
@@ -79,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
-        let numberOfBlocks = 5
+        let numberOfLifes = 3
         let blockWidth: CGFloat = 65
         let blockHeight: CGFloat = 25
         let blockSize = CGSize(width: blockWidth, height: blockHeight)
