@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DlE-Cv-QF0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pBy-UO-7EK">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,6 +15,21 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="2lk-db-iTN">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="pBy-UO-7EK" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fYF-Lx-QAW">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DlE-Cv-QF0" kind="relationship" relationship="rootViewController" id="Ttk-Cc-hPJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7SV-zT-Bfm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2343" y="134"/>
+        </scene>
         <!--MenuVC-->
         <scene sceneID="YIw-u6-0Th">
             <objects>
@@ -81,6 +96,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="llS-19-LRS"/>
                     </view>
+                    <navigationItem key="navigationItem" id="7he-tP-udn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZF-6l-Bkn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

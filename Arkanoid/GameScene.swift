@@ -87,7 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let xOffset = (self.frame.width - totalBlockWidth) / 2
         
         //Adding 
-        let block = self.childNode(withName: "block") as! SKSpriteNode
+        //let block = self.childNode(withName: "block") as! SKSpriteNode
 
         self.enumerateChildNodes(withName: "block", using: ({
             node, stop in
