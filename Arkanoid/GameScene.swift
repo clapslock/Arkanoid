@@ -164,6 +164,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let body = physicsWorld.body(at: touchLocation!) {
                 if body.node!.name == PaddleCategoryName {
                     isFingerOnPaddle = true
+                    
+                } else if body.node!.name == "backBtn" {
+                    print("Trying to go back :/")
+                    self.view!.window!.rootViewController!.dismiss(animated: true, completion: nil)
                 }
             }
         case is GameOver:
@@ -267,6 +271,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }))
         return numberOfBricks == 0
     }
+    
+    
 }
 
 

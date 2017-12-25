@@ -102,10 +102,10 @@
             </objects>
             <point key="canvasLocation" x="-1498" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--levelSelectVC-->
         <scene sceneID="wOs-ru-efi">
             <objects>
-                <viewController id="PPC-L4-H7c" sceneMemberID="viewController">
+                <viewController title="levelSelectVC" id="PPC-L4-H7c" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tdC-c1-tHg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -315,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="158" y="134"/>
+            <point key="canvasLocation" x="257" y="134"/>
         </scene>
     </scenes>
     <resources>
