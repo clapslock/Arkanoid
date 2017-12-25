@@ -86,32 +86,61 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let totalBlockWidth = CGFloat(numberOfBlocks) * blockWidth
         let xOffset = (self.frame.width - totalBlockWidth) / 2
         
+        //Adding 
+        let block = self.childNode(withName: "block") as! SKSpriteNode
+
+        self.enumerateChildNodes(withName: "block", using: ({
+            node, stop in
+            if let block = node as? SKSpriteNode {
+                block.physicsBody = SKPhysicsBody(rectangleOf: blockSize)
+                block.physicsBody?.allowsRotation = false
+                block.physicsBody?.friction = 0.0
+                block.physicsBody?.affectedByGravity = false
+                block.physicsBody?.isDynamic = false
+                block.name = BlockCategoryName
+                block.physicsBody?.categoryBitMask = blockCategory
+                block.zPosition = 2
+            }
+            
+        }))
+        let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
+        gameMessage.name = GameMessageName
+        gameMessage.position = CGPoint(x: 0, y: 0)
+        gameMessage.zPosition = 4
+        gameMessage.setScale(0.0)
+        self.addChild(gameMessage)
+        
+        self.gameState.enter(WaitingForTap.self)
+        
+        
         //adding blocks programatically to the scene
-        for i in 0..<numberOfBlocks {
-            let block = SKSpriteNode(imageNamed: "brick_blue_small")
-            
-            block.position = CGPoint(x: (self.frame.width / 2) - 2 * xOffset - CGFloat(i) * blockWidth,
-                                     y: (self.frame.height / 2) * 0.7)
-            block.physicsBody = SKPhysicsBody(rectangleOf: blockSize)
-            block.physicsBody?.allowsRotation = false
-            block.physicsBody?.friction = 0.0
-            block.physicsBody?.affectedByGravity = false
-            block.physicsBody?.isDynamic = false
-            block.name = BlockCategoryName
-            block.physicsBody?.categoryBitMask = blockCategory
-            block.zPosition = 2
-            block.size = blockSize
-            addChild(block)
-            
-            let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
-            gameMessage.name = GameMessageName
-            gameMessage.position = CGPoint(x: 0, y: 0)
-            gameMessage.zPosition = 4
-            gameMessage.setScale(0.0)
-            addChild(gameMessage)
-            
-            gameState.enter(WaitingForTap.self)
-        }
+        
+//        for i in 0..<numberOfBlocks {
+//            let block = SKSpriteNode(imageNamed: "brick_blue_small")
+//
+//            block.position = CGPoint(x: (self.frame.width / 2) - 2 * xOffset - CGFloat(i) * blockWidth,
+//                                     y: (self.frame.height / 2) * 0.7)
+//            block.physicsBody = SKPhysicsBody(rectangleOf: blockSize)
+//            block.physicsBody?.allowsRotation = false
+//            block.physicsBody?.friction = 0.0
+//            block.physicsBody?.affectedByGravity = false
+//            block.physicsBody?.isDynamic = false
+//            block.name = BlockCategoryName
+//            block.physicsBody?.categoryBitMask = blockCategory
+//            block.zPosition = 2
+//            block.size = blockSize
+//            addChild(block)
+//
+//            let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
+//            gameMessage.name = GameMessageName
+//            gameMessage.position = CGPoint(x: 0, y: 0)
+//            gameMessage.zPosition = 4
+//            gameMessage.setScale(0.0)
+//            addChild(gameMessage)
+//
+//            gameState.enter(WaitingForTap.self)
+//        }
+        
         // adding emitter node to the ball (trail)
         let trailNode = SKNode()
         trailNode.zPosition = 1
