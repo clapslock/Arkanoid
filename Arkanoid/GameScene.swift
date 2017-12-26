@@ -23,6 +23,7 @@ let borderCategory: UInt32 = 0x1 << 4
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var numberOfLifes = 3
     var isFingerOnPaddle = false
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
@@ -47,6 +48,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let blockBreakSound = SKAction.playSoundFileNamed("block-break", waitForCompletion: false)
     let gameWonSound = SKAction.playSoundFileNamed("game-won", waitForCompletion: false)
     let gameOverSound = SKAction.playSoundFileNamed("game-over", waitForCompletion: false)
+    
+    // MARK: Hearts and blocks sizes
+    
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -78,16 +82,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
-        let numberOfLifes = 3
-        let blockWidth: CGFloat = 65
-        let blockHeight: CGFloat = 25
-        let blockSize = CGSize(width: blockWidth, height: blockHeight)
-        let totalBlockWidth = CGFloat(numberOfBlocks) * blockWidth
-        let xOffset = (self.frame.width - totalBlockWidth) / 2
         
-        //Adding 
-        //let block = self.childNode(withName: "block") as! SKSpriteNode
-
+        let heart1 = childNode(withName: "heart1") as! SKSpriteNode
+        let heart2 = childNode(withName: "heart2") as! SKSpriteNode
+        let heart3 = childNode(withName: "heart3") as! SKSpriteNode
+        
+        let heartHeight: CGFloat = 33
+        let heartWidth: CGFloat = 36
+        let heartSize = CGSize(width: heartHeight, height: heartHeight)
+        
+        let blockHeight: CGFloat = 25
+        let blockWidth: CGFloat = 65
+        let blockSize: CGSize = CGSize(width: blockWidth, height: blockHeight)
+    
         self.enumerateChildNodes(withName: "block", using: ({
             node, stop in
             if let block = node as? SKSpriteNode {
@@ -100,8 +107,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 block.physicsBody?.categoryBitMask = blockCategory
                 block.zPosition = 2
             }
-            
         }))
+        
         let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
         gameMessage.name = GameMessageName
         gameMessage.position = CGPoint(x: 0, y: 0)
@@ -111,45 +118,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.gameState.enter(WaitingForTap.self)
         
-        
-        //adding blocks programatically to the scene
-        
-//        for i in 0..<numberOfBlocks {
-//            let block = SKSpriteNode(imageNamed: "brick_blue_small")
-//
-//            block.position = CGPoint(x: (self.frame.width / 2) - 2 * xOffset - CGFloat(i) * blockWidth,
-//                                     y: (self.frame.height / 2) * 0.7)
-//            block.physicsBody = SKPhysicsBody(rectangleOf: blockSize)
-//            block.physicsBody?.allowsRotation = false
-//            block.physicsBody?.friction = 0.0
-//            block.physicsBody?.affectedByGravity = false
-//            block.physicsBody?.isDynamic = false
-//            block.name = BlockCategoryName
-//            block.physicsBody?.categoryBitMask = blockCategory
-//            block.zPosition = 2
-//            block.size = blockSize
-//            addChild(block)
-//
-//            let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
-//            gameMessage.name = GameMessageName
-//            gameMessage.position = CGPoint(x: 0, y: 0)
-//            gameMessage.zPosition = 4
-//            gameMessage.setScale(0.0)
-//            addChild(gameMessage)
-//
-//            gameState.enter(WaitingForTap.self)
-//        }
-        
         // adding emitter node to the ball (trail)
         let trailNode = SKNode()
         trailNode.zPosition = 1
         addChild(trailNode)
-        
         let trail = SKEmitterNode(fileNamed: "BallTrail")!
         trail.targetNode = trailNode
         ball.addChild(trail)
-        
     }
+    
     // MARK: Handling touch
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch gameState.currentState {
@@ -163,12 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let body = physicsWorld.body(at: touchLocation!) {
                 if body.node!.name == PaddleCategoryName {
                     isFingerOnPaddle = true
-                    
                 }
-//                else if body.node!.name == "backBtn" {
-//                    print("Trying to go back :/")
-//                    self.view!.window!.rootViewController!.dismiss(animated: true, completion: nil)
-//                }
             }
         case is GameOver:
             let newScene = GameScene(fileNamed: "GameScene")
@@ -182,22 +154,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if isFingerOnPaddle {
-            let touch = touches.first
-            let touchLocation = touch!.location(in: self)
-            let previousLocation = touch!.previousLocation(in: self)
-            let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
-            
-            var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
-            if paddleX < 0 {
-                paddleX = max(paddleX, -(self.frame.size.width / 2) + (paddle.size.width / 2))
-            } else if paddleX > 0 {
-                paddleX = min(paddleX, (self.frame.size.width / 2) - (paddle.size.width / 2))
-                
-            }
-            
-            paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
-       // }
+        // add condition  "if isFingerOnPaddle" to make paddle move only when player touches the paddle
+        let touch = touches.first
+        let touchLocation = touch!.location(in: self)
+        let previousLocation = touch!.previousLocation(in: self)
+        
+        let paddle = childNode(withName: PaddleCategoryName) as! SKSpriteNode
+        var paddleX = paddle.position.x + (touchLocation.x - previousLocation.x)
+        
+        if paddleX < 0 {
+            paddleX = max(paddleX, -(self.frame.size.width / 2) + (paddle.size.width / 2))
+        } else if paddleX > 0 {
+            paddleX = min(paddleX, (self.frame.size.width / 2) - (paddle.size.width / 2))
+        }
+        paddle.position = CGPoint(x: paddleX, y: paddle.position.y)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -207,12 +177,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         gameState.update(deltaTime: currentTime)
     }
+    
     // MARK: Handling collisions
     func didBegin(_ contact: SKPhysicsContact) {
         if gameState.currentState is Playing {
             var firstBody: SKPhysicsBody
             var secondBody: SKPhysicsBody
             
+            // if statement makes sure that first body is always the ball
             if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
                 firstBody = contact.bodyA
                 secondBody = contact.bodyB
@@ -222,8 +194,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == bottomCategory {
-                gameState.enter(GameOver.self)
-                gameWon = false
+                numberOfLifes -= 1
+                print("Remaining lifes: \(numberOfLifes)")
+                if numberOfLifes == 0 {
+                    gameState.enter(GameOver.self)
+                    gameWon = false
+                } else {
+                    gameState.enter(WaitingForTap.self)
+                    //gameWon = false
+                }
             }
             
             if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == borderCategory {
@@ -244,7 +223,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-
+    
     // MARK: Remove block from the scene
     func breakBlock(node: SKNode) {
         run(blockBreakSound)
