@@ -67,6 +67,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0744EE321FF292DC008A29D9 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				07560B881FEE73DC00F2ED20 /* Level1.sks */,
+				07C792D61FF1D88700582665 /* Level2.sks */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
 		07560B7A1FEE73DC00F2ED20 = {
 			isa = PBXGroup;
 			children = (
@@ -86,13 +95,12 @@
 		07560B851FEE73DC00F2ED20 /* Arkanoid */ = {
 			isa = PBXGroup;
 			children = (
-				07560B881FEE73DC00F2ED20 /* Level1.sks */,
-				07C792D61FF1D88700582665 /* Level2.sks */,
 				07560B8C1FEE73DC00F2ED20 /* GameScene.swift */,
 				07560B901FEE73DC00F2ED20 /* Main.storyboard */,
 				07BCFF261FF0858B00876EA8 /* MenuVC.swift */,
 				071809971FF17B90009CC571 /* LevelSelectVC.swift */,
 				07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */,
+				0744EE321FF292DC008A29D9 /* Levels */,
 				07560BB11FEE820B00F2ED20 /* Game States */,
 				07560BB01FEE806100F2ED20 /* Supporting files */,
 				07560BA51FEE800300F2ED20 /* Sounds */,
