@@ -143,7 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         // TODO: TODO: transfer current filename
         case is GameOver:
-            let newScene = GameScene(fileNamed: "Level1")
+            let newScene = GameScene(fileNamed: scene!.name!)
             newScene?.scaleMode = .aspectFit
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             self.view?.presentScene(newScene!, transition: reveal)
@@ -185,6 +185,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let heart2 = childNode(withName: "heart2") as! SKSpriteNode
         let heart3 = childNode(withName: "heart3") as! SKSpriteNode
         
+        let nextLevelBtn = SKSpriteNode(imageNamed: "next")
+        nextLevelBtn.position = CGPoint(x: 0, y: -100)
+        nextLevelBtn.zPosition = 5
+        
         if gameState.currentState is Playing {
             var firstBody: SKPhysicsBody
             var secondBody: SKPhysicsBody
@@ -214,7 +218,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     gameWon = false
                 } else {
                     gameState.enter(WaitingForTap.self)
-                    //gameWon = false
                 }
             }
             
@@ -230,8 +233,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory {
                 breakBlock(node: secondBody.node!)
                 if isGameWon() {
+                    addChild(nextLevelBtn)
                     gameState.enter(GameOver.self)
                     gameWon = true
+                    
                 }
             }
         }

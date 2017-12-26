@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		071809981FF17B90009CC571 /* LevelSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071809971FF17B90009CC571 /* LevelSelectVC.swift */; };
+		0744EE341FF29B3B008A29D9 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0744EE331FF29B3B008A29D9 /* Level3.sks */; };
+		0744EE361FF2AA2B008A29D9 /* Level4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0744EE351FF2AA2B008A29D9 /* Level4.sks */; };
 		07560B871FEE73DC00F2ED20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560B861FEE73DC00F2ED20 /* AppDelegate.swift */; };
 		07560B891FEE73DC00F2ED20 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560B881FEE73DC00F2ED20 /* Level1.sks */; };
 		07560B8B1FEE73DC00F2ED20 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560B8A1FEE73DC00F2ED20 /* Actions.sks */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		071809971FF17B90009CC571 /* LevelSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectVC.swift; sourceTree = "<group>"; };
+		0744EE331FF29B3B008A29D9 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
+		0744EE351FF2AA2B008A29D9 /* Level4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4.sks; sourceTree = "<group>"; };
 		07560B831FEE73DC00F2ED20 /* Arkanoid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arkanoid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07560B861FEE73DC00F2ED20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07560B881FEE73DC00F2ED20 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 			children = (
 				07560B881FEE73DC00F2ED20 /* Level1.sks */,
 				07C792D61FF1D88700582665 /* Level2.sks */,
+				0744EE331FF29B3B008A29D9 /* Level3.sks */,
+				0744EE351FF2AA2B008A29D9 /* Level4.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 				07560BAF1FEE802000F2ED20 /* game-won.mp3 in Resources */,
 				07560BAE1FEE802000F2ED20 /* pongblip.wav in Resources */,
 				07560BAC1FEE802000F2ED20 /* game-over.wav in Resources */,
+				0744EE341FF29B3B008A29D9 /* Level3.sks in Resources */,
 				07C792D71FF1D88700582665 /* Level2.sks in Resources */,
 				07560BA21FEE7F2D00F2ED20 /* BrokenPlatform.sks in Resources */,
 				07560B891FEE73DC00F2ED20 /* Level1.sks in Resources */,
@@ -224,6 +231,7 @@
 				07560B971FEE73DC00F2ED20 /* LaunchScreen.storyboard in Resources */,
 				07560BAD1FEE802000F2ED20 /* block-break.wav in Resources */,
 				07560B8B1FEE73DC00F2ED20 /* Actions.sks in Resources */,
+				0744EE361FF2AA2B008A29D9 /* Level4.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
