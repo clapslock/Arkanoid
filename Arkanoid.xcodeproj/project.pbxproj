@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		071809981FF17B90009CC571 /* LevelSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071809971FF17B90009CC571 /* LevelSelectVC.swift */; };
 		07560B871FEE73DC00F2ED20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560B861FEE73DC00F2ED20 /* AppDelegate.swift */; };
-		07560B891FEE73DC00F2ED20 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560B881FEE73DC00F2ED20 /* GameScene.sks */; };
+		07560B891FEE73DC00F2ED20 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560B881FEE73DC00F2ED20 /* Level1.sks */; };
 		07560B8B1FEE73DC00F2ED20 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07560B8A1FEE73DC00F2ED20 /* Actions.sks */; };
 		07560B8D1FEE73DC00F2ED20 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560B8C1FEE73DC00F2ED20 /* GameScene.swift */; };
 		07560B8F1FEE73DC00F2ED20 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */; };
@@ -27,13 +27,14 @@
 		07560BB51FEE82CE00F2ED20 /* Playing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB41FEE82CE00F2ED20 /* Playing.swift */; };
 		07560BB71FEE82DD00F2ED20 /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07560BB61FEE82DD00F2ED20 /* GameOver.swift */; };
 		07BCFF271FF0858B00876EA8 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BCFF261FF0858B00876EA8 /* MenuVC.swift */; };
+		07C792D71FF1D88700582665 /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 07C792D61FF1D88700582665 /* Level2.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		071809971FF17B90009CC571 /* LevelSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectVC.swift; sourceTree = "<group>"; };
 		07560B831FEE73DC00F2ED20 /* Arkanoid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Arkanoid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07560B861FEE73DC00F2ED20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		07560B881FEE73DC00F2ED20 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		07560B881FEE73DC00F2ED20 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		07560B8A1FEE73DC00F2ED20 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		07560B8C1FEE73DC00F2ED20 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		07560BB41FEE82CE00F2ED20 /* Playing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playing.swift; sourceTree = "<group>"; };
 		07560BB61FEE82DD00F2ED20 /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		07BCFF261FF0858B00876EA8 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		07C792D61FF1D88700582665 /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +86,8 @@
 		07560B851FEE73DC00F2ED20 /* Arkanoid */ = {
 			isa = PBXGroup;
 			children = (
-				07560B881FEE73DC00F2ED20 /* GameScene.sks */,
+				07560B881FEE73DC00F2ED20 /* Level1.sks */,
+				07C792D61FF1D88700582665 /* Level2.sks */,
 				07560B8C1FEE73DC00F2ED20 /* GameScene.swift */,
 				07560B901FEE73DC00F2ED20 /* Main.storyboard */,
 				07BCFF261FF0858B00876EA8 /* MenuVC.swift */,
@@ -204,8 +207,9 @@
 				07560BAF1FEE802000F2ED20 /* game-won.mp3 in Resources */,
 				07560BAE1FEE802000F2ED20 /* pongblip.wav in Resources */,
 				07560BAC1FEE802000F2ED20 /* game-over.wav in Resources */,
+				07C792D71FF1D88700582665 /* Level2.sks in Resources */,
 				07560BA21FEE7F2D00F2ED20 /* BrokenPlatform.sks in Resources */,
-				07560B891FEE73DC00F2ED20 /* GameScene.sks in Resources */,
+				07560B891FEE73DC00F2ED20 /* Level1.sks in Resources */,
 				07560BAB1FEE802000F2ED20 /* paddleBlip.wav in Resources */,
 				07560B941FEE73DC00F2ED20 /* Assets.xcassets in Resources */,
 				07560BA31FEE7F2D00F2ED20 /* BallTrail.sks in Resources */,

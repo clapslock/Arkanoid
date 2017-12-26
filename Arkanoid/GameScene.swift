@@ -140,8 +140,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     isFingerOnPaddle = true
                 }
             }
+            
+        // TODO: TODO: transfer current filename
         case is GameOver:
-            let newScene = GameScene(fileNamed: "GameScene")
+            let newScene = GameScene(fileNamed: "Level1")
             newScene?.scaleMode = .aspectFit
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             self.view?.presentScene(newScene!, transition: reveal)

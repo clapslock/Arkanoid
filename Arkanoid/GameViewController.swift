@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
     
-    var selectedLevel = ""
+    var selectedLevel: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

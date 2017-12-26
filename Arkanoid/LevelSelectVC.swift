@@ -25,13 +25,19 @@ class LevelSelectVC: UIViewController {
     }
     //Segues for different levels
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is GameViewController {
-            let vc = segue.destination as? GameViewController
-            if let pressedButton = sender as? UIButton {
-                vc?.selectedLevel = "Level\(pressedButton.currentTitle!)"
+        if let destinationVC = segue.destination as? GameViewController {
+                if let buttonTitle = (sender as? UIButton)?.currentTitle {
+                    destinationVC.selectedLevel = "Level\(buttonTitle)"
+                
             }
         }
     }
+    
+    @IBAction func levelBtnPressed(_ sender: UIButton) {
+        print("\n\(sender.currentTitle!)\n")
+        performSegue(withIdentifier: "GameVC", sender: sender)
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
