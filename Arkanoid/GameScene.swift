@@ -92,7 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let blockHeight: CGFloat = 25
         let blockWidth: CGFloat = 65
         let blockSize: CGSize = CGSize(width: blockWidth, height: blockHeight)
-    
+        
         self.enumerateChildNodes(withName: "block", using: ({
             node, stop in
             if let block = node as? SKSpriteNode {
@@ -239,14 +239,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Adds SKEmitternode to destroyed blocks
             if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory {
+                let secondBodyTexture = (secondBody.node as? SKSpriteNode)?.texture?.name
                 
-                let secondBodyTexture = (secondBody as? SKSpriteNode)?.texture
                 if brickIsCracked(secondBodyTexture!) {
                     breakBlock(node: secondBody.node!)
                 } else {
-                    
+                    (secondBody.node as? SKSpriteNode)?.texture = SKTexture(imageNamed: crackedShell(secondBodyTexture!))
                 }
-
+                
                 if isGameWon() {
                     addChild(nextLevelBtn)
                     let actionSequence = SKAction.sequence([SKAction.scale(to: 1.0, duration: 0.25)])
@@ -257,7 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-}
+    }
     
     // MARK: Remove block from the scene
     func breakBlock(node: SKNode) {
@@ -304,19 +304,73 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return ""
         }
     }
-
-    func brickIsCracked(_ texture: SKTexture) -> Bool{
+    
+    func brickIsCracked(_ texture: String) -> Bool{
         switch texture {
-        case #imageLiteral(resourceName: "brick_blue_small_cracked"), #imageLiteral(resourceName: "brick_green_small_cracked"), #imageLiteral(resourceName: "brick_yellow_small_cracked"), #imageLiteral(resourceName: "brick_pink_small_cracked"), #imageLiteral(resourceName: "brick_pink_small_cracked"):
+        case "brick_blue_small_cracked",
+             "brick_green_small_cracked",
+             "brick_yellow_small_cracked",
+             "brick_pink_small_cracked",
+             "brick_violet_small_cracked":
             return true
-        case #imageLiteral(resourceName: "brick_blue_small"), #imageLiteral(resourceName: "brick_green_small"), #imageLiteral(resourceName: "brick_yellow_small"), #imageLiteral(resourceName: "brick_violet_small"), #imageLiteral(resourceName: "brick_pink_small"):
+        case "brick_blue_small",
+             "brick_green_small",
+             "brick_yellow_small",
+             "brick_pink_small",
+             "brick_violet_small":
             return false
         default:
             return true
         }
     }
     
-    
+    func crackedShell(_ texture: String) -> String {
+        switch texture {
+        case "brick_blue_small":
+            return "brick_blue_small_cracked"
+            
+        case "brick_pink_small":
+            return "brick_pink_small_cracked"
+            
+        case "brick_green_small":
+            return "brick_green_small_cracked"
+            
+        case "brick_yellow_small":
+            return "brick_yellow_small_cracked"
+            
+        case "brick_violet_small":
+            return "brick_violet_small_cracked"
+        default:
+            return "No souch texture exists"
+        }
+        
+        
+    }
+}
+
+extension SKTexture
+{
+    var name : String
+    {
+        return self.description.slice(start: "'",to: "'")!
+    }
+}
+
+extension String {
+    func slice(start: String, to: String) -> String?
+    {
+        
+        return (range(of: start)?.upperBound).flatMap
+            {
+                sInd in
+                (range(of: to, range: sInd..<endIndex)?.lowerBound).map
+                    {
+                        eInd in
+                        substring(with:sInd..<eInd)
+                        
+                }
+        }
+    }
 }
 
 
