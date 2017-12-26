@@ -12,7 +12,6 @@ class LevelSelectVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @IBAction func backBtnTapped(_ sender: UIButton) {
@@ -22,10 +21,17 @@ class LevelSelectVC: UIViewController {
     @IBAction func unwindToLevelSelect(segue: UIStoryboardSegue) {
         print("It worked!\nBack in level select again!")
         if let gameVC = segue.source as? GameViewController {
-            
         }
     }
-    
+    //Segues for different levels
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is GameViewController {
+            let vc = segue.destination as? GameViewController
+            if let pressedButton = sender as? UIButton {
+                vc?.selectedLevel = "Level\(pressedButton.currentTitle!)"
+            }
+        }
+    }
     override var prefersStatusBarHidden: Bool {
         return true
     }

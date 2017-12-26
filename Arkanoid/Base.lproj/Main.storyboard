@@ -349,7 +349,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
                 <exit id="Mot-Ak-eM2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="257" y="134"/>
+            <point key="canvasLocation" x="143" y="-566"/>
         </scene>
     </scenes>
     <resources>
