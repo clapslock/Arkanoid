@@ -141,12 +141,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             
-        // TODO: TODO: transfer current filename
         case is GameOver:
-            let newScene = GameScene(fileNamed: scene!.name!)
+            var gameSceneName: String!
+            if isGameWon() {
+                gameSceneName = nextSceneName(scene!.name!)
+            } else if !isGameWon() {
+                gameSceneName = scene!.name!
+            }
+            
+            let newScene = GameScene(fileNamed: gameSceneName)
             newScene?.scaleMode = .aspectFit
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             self.view?.presentScene(newScene!, transition: reveal)
+            
             
         default:
             break
@@ -186,6 +193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let heart3 = childNode(withName: "heart3") as! SKSpriteNode
         
         let nextLevelBtn = SKSpriteNode(imageNamed: "next")
+        nextLevelBtn.setScale(CGFloat(0.25))
         nextLevelBtn.position = CGPoint(x: 0, y: -100)
         nextLevelBtn.zPosition = 5
         
@@ -234,6 +242,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 breakBlock(node: secondBody.node!)
                 if isGameWon() {
                     addChild(nextLevelBtn)
+                    let actionSequence = SKAction.sequence([SKAction.scale(to: 1.0, duration: 0.25)])
+                    nextLevelBtn.run(actionSequence)
                     gameState.enter(GameOver.self)
                     gameWon = true
                     
@@ -267,6 +277,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             numberOfBricks = numberOfBricks + 1
         }))
         return numberOfBricks == 0
+    }
+    
+    func nextSceneName(_ name: String) -> String {
+        switch name {
+        case "Level1":
+            return "Level2"
+        case "Level2":
+            return "Level3"
+        case "Level3":
+            return "Level4"
+        case "Level4":
+            return "Level5"
+        case "Level5":
+            return "Level6"
+        case "Level6":
+            return "Level7"
+        default:
+            return ""
+        }
     }
     
     
