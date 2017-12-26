@@ -239,7 +239,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Adds SKEmitternode to destroyed blocks
             if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == blockCategory {
-                breakBlock(node: secondBody.node!)
+                
+                let secondBodyTexture = (secondBody as? SKSpriteNode)?.texture
+                if brickIsCracked(secondBodyTexture!) {
+                    breakBlock(node: secondBody.node!)
+                } else {
+                    
+                }
+
                 if isGameWon() {
                     addChild(nextLevelBtn)
                     let actionSequence = SKAction.sequence([SKAction.scale(to: 1.0, duration: 0.25)])
@@ -250,7 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-    }
+}
     
     // MARK: Remove block from the scene
     func breakBlock(node: SKNode) {
@@ -295,6 +302,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return "Level7"
         default:
             return ""
+        }
+    }
+
+    func brickIsCracked(_ texture: SKTexture) -> Bool{
+        switch texture {
+        case #imageLiteral(resourceName: "brick_blue_small_cracked"), #imageLiteral(resourceName: "brick_green_small_cracked"), #imageLiteral(resourceName: "brick_yellow_small_cracked"), #imageLiteral(resourceName: "brick_pink_small_cracked"), #imageLiteral(resourceName: "brick_pink_small_cracked"):
+            return true
+        case #imageLiteral(resourceName: "brick_blue_small"), #imageLiteral(resourceName: "brick_green_small"), #imageLiteral(resourceName: "brick_yellow_small"), #imageLiteral(resourceName: "brick_violet_small"), #imageLiteral(resourceName: "brick_pink_small"):
+            return false
+        default:
+            return true
         }
     }
     
