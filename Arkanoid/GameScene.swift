@@ -23,7 +23,10 @@ let borderCategory: UInt32 = 0x1 << 4
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    
     var numberOfLifes = 3
+    var fullHeart: SKTexture = SKTexture(imageNamed: "full_heart")
+    var emptyHeart: SKTexture = SKTexture(imageNamed: "empty_heart")
     var isFingerOnPaddle = false
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
         WaitingForTap(scene: self),
@@ -81,11 +84,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
-        
-        
-        let heart1 = childNode(withName: "heart1") as! SKSpriteNode
-        let heart2 = childNode(withName: "heart2") as! SKSpriteNode
-        let heart3 = childNode(withName: "heart3") as! SKSpriteNode
         
         let heartHeight: CGFloat = 33
         let heartWidth: CGFloat = 36
@@ -180,6 +178,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: Handling collisions
     func didBegin(_ contact: SKPhysicsContact) {
+        
+        let heart1 = childNode(withName: "heart1") as! SKSpriteNode
+        let heart2 = childNode(withName: "heart2") as! SKSpriteNode
+        let heart3 = childNode(withName: "heart3") as! SKSpriteNode
+        
         if gameState.currentState is Playing {
             var firstBody: SKPhysicsBody
             var secondBody: SKPhysicsBody
@@ -195,8 +198,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if firstBody.categoryBitMask == ballCategory && secondBody.categoryBitMask == bottomCategory {
                 numberOfLifes -= 1
-                print("Remaining lifes: \(numberOfLifes)")
+                switch numberOfLifes {
+                case 2:
+                    heart1.texture = emptyHeart
+                case 1:
+                    heart2.texture = emptyHeart
+                default:
+                    break
+                }
                 if numberOfLifes == 0 {
+                    heart3.texture = emptyHeart
                     gameState.enter(GameOver.self)
                     gameWon = false
                 } else {
