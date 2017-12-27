@@ -313,11 +313,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
              "brick_pink_small_cracked",
              "brick_violet_small_cracked":
             return true
-        case "brick_blue_small",
-             "brick_green_small",
-             "brick_yellow_small",
-             "brick_pink_small",
-             "brick_violet_small":
+             //"brick_blue_small",
+        case "brick_green_small",
+             "brick_yellow_small":
+             //"brick_pink_small":
+             //"brick_violet_small":
             return false
         default:
             return true
@@ -326,11 +326,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func crackedShell(_ texture: String) -> String {
         switch texture {
-        case "brick_blue_small":
-            return "brick_blue_small_cracked"
-            
-        case "brick_pink_small":
-            return "brick_pink_small_cracked"
+// Uncomment to make all bricks 2-hit to destroy
+//        case "brick_blue_small":
+//            return "brick_blue_small_cracked"
+//
+//        case "brick_pink_small":
+//            return "brick_pink_small_cracked"
             
         case "brick_green_small":
             return "brick_green_small_cracked"
@@ -338,8 +339,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "brick_yellow_small":
             return "brick_yellow_small_cracked"
             
-        case "brick_violet_small":
-            return "brick_violet_small_cracked"
+//        case "brick_violet_small":
+//            return "brick_violet_small_cracked"
         default:
             return "No souch texture exists"
         }
