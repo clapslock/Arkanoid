@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071809981FF17B90009CC571 /* LevelSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071809971FF17B90009CC571 /* LevelSelectVC.swift */; };
+		073306601FF3370700C89499 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0733065F1FF3370700C89499 /* SettingsVC.swift */; };
 		0744EE341FF29B3B008A29D9 /* Level3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0744EE331FF29B3B008A29D9 /* Level3.sks */; };
 		0744EE361FF2AA2B008A29D9 /* Level4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0744EE351FF2AA2B008A29D9 /* Level4.sks */; };
 		0744EE3A1FF327F9008A29D9 /* CreditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0744EE391FF327F9008A29D9 /* CreditsVC.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		071809971FF17B90009CC571 /* LevelSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectVC.swift; sourceTree = "<group>"; };
+		0733065F1FF3370700C89499 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		0744EE331FF29B3B008A29D9 /* Level3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level3.sks; sourceTree = "<group>"; };
 		0744EE351FF2AA2B008A29D9 /* Level4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level4.sks; sourceTree = "<group>"; };
 		0744EE391FF327F9008A29D9 /* CreditsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsVC.swift; sourceTree = "<group>"; };
@@ -107,8 +109,9 @@
 				07560B901FEE73DC00F2ED20 /* Main.storyboard */,
 				07BCFF261FF0858B00876EA8 /* MenuVC.swift */,
 				071809971FF17B90009CC571 /* LevelSelectVC.swift */,
-				07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */,
+				0733065F1FF3370700C89499 /* SettingsVC.swift */,
 				0744EE391FF327F9008A29D9 /* CreditsVC.swift */,
+				07560B8E1FEE73DC00F2ED20 /* GameViewController.swift */,
 				0744EE321FF292DC008A29D9 /* Levels */,
 				07560BB11FEE820B00F2ED20 /* Game States */,
 				07560BB01FEE806100F2ED20 /* Supporting files */,
@@ -254,6 +257,7 @@
 				0744EE3A1FF327F9008A29D9 /* CreditsVC.swift in Sources */,
 				07560BB51FEE82CE00F2ED20 /* Playing.swift in Sources */,
 				071809981FF17B90009CC571 /* LevelSelectVC.swift in Sources */,
+				073306601FF3370700C89499 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

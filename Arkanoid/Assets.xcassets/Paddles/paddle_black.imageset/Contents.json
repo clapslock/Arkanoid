@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "paddle_black.png",
+      "filename" : "paddle_curved.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paddle_black@2x.png",
+      "filename" : "paddle_curved@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "paddle_black@3x.png",
+      "filename" : "paddle_curved@3x.png",
       "scale" : "3x"
     }
   ],
